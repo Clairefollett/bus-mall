@@ -1,0 +1,13 @@
+#image_one {
+  width: 300px;
+  border: 2px solid green;
+}
+#image_two {
+  width: 300px;
+  border: 2px solid green;
+  margin: 0 auto;
+}
+#image_three {
+  width: 300px;
+  border: 2px solid green;
+}
