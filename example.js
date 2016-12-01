@@ -13,7 +13,15 @@ for(var i = 0; i < paths.length; i++) {
 displayArea.addEventListener('click', clickHandler);
 
 function clickHandler(event) {
+  if (totalclicks > 25) {
+    return;
+  }
   var targetString = event.target.src;
+  totalClicks += 1;
+
+  if (totalClicks >= 25) {
+    renderChart();
+  }
 
   addClicks(targetString);
   changePicture();

@@ -16,8 +16,6 @@ function clickhandler(event) {
   tallyClicks(elPicture);
   changePicture();
 }
-
-
 function ItemImage(path) {
   this.path = '../bus-mall/img/' + path;
   this.clicked = 0;
@@ -58,8 +56,19 @@ function tallyClicks(path) {
     }
   }
 }
+function saveClickValues() {
+  var itemsJSON = JSON.stringify('items');
+  local.Storage.setItem('items', itemsJSON);
+  localStorage.getItem('items');
+  JSON.parse(storedItemsString);
+}
+
+//I hope this is right
 
 generateRandomNumber();
+
+saveClickValues();
+
 
 function renderChart() {
   var dataArray = [];
