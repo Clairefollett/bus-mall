@@ -4,7 +4,13 @@ var items = [];
 var displayIndices = [];
 
 var displayArea = document.getElementById('image_area');
+var storedItems = localStorage.getItems('items');
 
+if (storedItems) {
+  //parse and set to items
+  item = JSON.parse(storedItems);
+} else {
+  //creates items array
 for(var i = 0; i < paths.length; i++) {
   var newItem = new ItemImage(paths[i]);
   items.push(newItem);
@@ -13,18 +19,21 @@ for(var i = 0; i < paths.length; i++) {
 displayArea.addEventListener('click', clickHandler);
 
 function clickHandler(event) {
-  if (totalclicks > 25) {
+  if (totalClicks > 25) {
     return;
   }
   var targetString = event.target.src;
   totalClicks += 1;
 
+  addClicks(targetString);
+  changePicture();
+
   if (totalClicks >= 25) {
+    var itemsJSON = JSON.stringify('items');
+    localStorage.setItem('items', itemsJSON);
     renderChart();
   }
 
-  addClicks(targetString);
-  changePicture();
 }
 
 function ItemImage(path) {
